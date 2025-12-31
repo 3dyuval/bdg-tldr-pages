@@ -2,7 +2,7 @@
 
 > Browser automation via Chrome DevTools Protocol.
 > Start sessions, inspect DOM, network, console, execute raw CDP commands.
-> See also: `bdg-dom`, `bdg-cdp`, `bdg-network`, `bdg-console`.
+> See also: `bdg dom`, `bdg cdp`, `bdg network`, `bdg console`.
 > More information: <https://github.com/anthropics/browser-debugger-cli>.
 
 - Start a session with a URL:
