@@ -2,36 +2,37 @@
 
 > Browser automation via Chrome DevTools Protocol.
 > Start sessions, inspect DOM, network, console, execute raw CDP commands.
+> See also: `bdg-dom`, `bdg-cdp`, `bdg-network`, `bdg-console`.
 > More information: <https://github.com/anthropics/browser-debugger-cli>.
 
 - Start a session with a URL:
 
 `bdg {{https://example.com}}`
 
-- Start in headless mode (no visible browser):
+- Start headless with custom Chrome flags:
 
-`bdg --headless {{url}}`
+`bdg --headless {{url}} --chrome-flags="{{--ignore-certificate-errors}}"`
 
-- Start with custom Chrome flags (e.g., ignore SSL errors):
+- DOM: query, click, fill, screenshot:
 
-`bdg {{url}} --chrome-flags="{{--ignore-certificate-errors}}"`
+`bdg dom {{query|click|fill|screenshot}} {{selector}}`
 
-- Check session status:
+- CDP: execute any Chrome DevTools Protocol command (53 domains, 300+ methods):
 
-`bdg status`
+`bdg cdp {{Runtime.evaluate|Page.navigate|Network.getCookies}} --params '{{...}}'`
 
-- Preview collected data without stopping:
+- Inspect network requests or console messages:
 
-`bdg peek`
+`bdg {{network|console}} list`
 
-- Stop session and save telemetry to ~/.bdg/session.json:
+- Check status, preview data, or stop session:
 
-`bdg stop`
+`bdg {{status|peek|stop}}`
 
-- Force cleanup stale session:
+- Discover CDP domains and methods:
 
-`bdg cleanup --force`
+`bdg cdp --list` or `bdg cdp {{Network}} --list` or `bdg cdp --search {{cookie}}`
 
-- Kill all Chrome processes (aggressive cleanup):
+- Cleanup stale session or kill all Chrome:
 
-`bdg cleanup --aggressive`
+`bdg cleanup {{--force|--aggressive}}`
